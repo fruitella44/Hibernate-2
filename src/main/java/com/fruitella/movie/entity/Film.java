@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.JoinColumnOrFormula;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -60,7 +59,8 @@ public class Film {
     @Column(columnDefinition = "enum('G', 'PG', 'PG-13', 'R', 'PG-17')")
     private Rating rating;
 
-    @Column(name = "special_features", columnDefinition = "set ('Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes')")
+    @Column(name = "special_features",
+            columnDefinition = "set ('Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes')")
     private String specialFeatures;
 
     @Column(name = "last_update")
@@ -69,8 +69,19 @@ public class Film {
 
     @ManyToMany
     @JoinTable(name = "actor",
-    joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
-    inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actor_id"))
+            joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actor_id"))
     private Set<Actor> actors;
+
+    @OneToOne
+    @JoinColumn(name = "film_id")
+    private FilmText filmText;
+
+    @ManyToMany
+    @JoinTable(name = "category",
+            joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
+    private Set<Category> category;
+
 
 }

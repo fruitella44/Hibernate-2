@@ -1,8 +1,10 @@
 package com.fruitella.movie.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public enum Rating {
     G("G"),
     PG("PG"),
@@ -12,7 +14,5 @@ public enum Rating {
 
     private final String enumerated;
 
-    Rating(String enumerated) {
-        this.enumerated = enumerated;
-    }
+//    enum('G', 'PG', 'PG-13', 'R', 'PG-17')
 }
