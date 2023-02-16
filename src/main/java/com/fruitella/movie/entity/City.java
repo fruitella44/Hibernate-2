@@ -1,12 +1,11 @@
 package com.fruitella.movie.entity;
 
 import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -17,24 +16,23 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "inventory", schema = "movie")
-public class Inventory {
+@Table(name = "city", schema = "movie")
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "inventory_id")
-    private Integer id;
+    @Column(name = "city_id")
+    private Short id;
+
+    @Column(name = "city", length = 50)
+    private String city;
 
     @ManyToOne
-    @JoinColumn(name = "film_id")
-    private Film film;
-
-    @ManyToOne
-    @JoinColumn(name = "store_id")
-    private Store store;
+    @JoinColumn(name = "country_id")
+    private Country country;
 
     @Column(name = "last_update")
-    @UpdateTimestamp
+    @Timestamp
     private LocalDateTime lastUpdate;
 
 

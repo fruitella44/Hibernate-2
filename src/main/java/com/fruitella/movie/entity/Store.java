@@ -26,11 +26,11 @@ public class Store {
 
     @OneToOne
     @JoinColumn(name = "manager_staff_id")
-    private Staff manager;
+    private Staff staff;
 
     @Column(name = "last_update")
     @Timestamp
-    private LocalDateTime localDateTime;
+    private LocalDateTime lastUpdate;
 
 
 }

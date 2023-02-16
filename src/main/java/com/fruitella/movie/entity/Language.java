@@ -20,7 +20,7 @@ public class Language {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "film_id")
+    @Column(name = "language_id")
     private Byte id;
 
     @Column(columnDefinition = "char")

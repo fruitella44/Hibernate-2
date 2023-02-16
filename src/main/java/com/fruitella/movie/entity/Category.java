@@ -35,5 +35,5 @@ public class Category {
     @JoinTable(name = "film_category",
             joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"))
-    private Set<Category> film_category;
+    private Set<Film> filmCategories;
 }

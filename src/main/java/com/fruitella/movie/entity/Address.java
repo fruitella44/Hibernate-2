@@ -30,8 +30,8 @@ public class Address {
     @Column(name = "address2", length = 50)
     private String address2;
 
-    @Column(name = "disctrict", length = 20)
-    private String disctrict;
+    @Column(name = "district", length = 20)
+    private String district;
 
     @ManyToOne
     @JoinColumn(name = "city_id")
@@ -45,5 +45,5 @@ public class Address {
 
     @Column(name = "last_update")
     @Timestamp
-    private LocalDateTime localDateTime;
+    private LocalDateTime lastUpdate;
 }

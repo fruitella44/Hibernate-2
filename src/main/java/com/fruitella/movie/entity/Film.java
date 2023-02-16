@@ -1,5 +1,6 @@
 package com.fruitella.movie.entity;
 
+import com.fruitella.movie.enums.Rating;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,7 +57,8 @@ public class Film {
     @Column(name = "replacement_cost")
     private BigDecimal replacementCost;
 
-    @Column(columnDefinition = "enum('G', 'PG', 'PG-13', 'R', 'PG-17')")
+    @Column(columnDefinition = "enum('G', 'PG', 'PG-13', 'R', 'NC-17')")
+    @Enumerated(value = EnumType.ORDINAL)
     private Rating rating;
 
     @Column(name = "special_features",
@@ -68,7 +70,7 @@ public class Film {
     private LocalDateTime lastUpdate;
 
     @ManyToMany
-    @JoinTable(name = "actor",
+    @JoinTable(name = "film_actor",
             joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actor_id"))
     private Set<Actor> actors;
@@ -78,10 +80,10 @@ public class Film {
     private FilmText filmText;
 
     @ManyToMany
-    @JoinTable(name = "category",
+    @JoinTable(name = "film_category",
             joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
-    private Set<Category> category;
+    private Set<Category> categories;
 
 
 }

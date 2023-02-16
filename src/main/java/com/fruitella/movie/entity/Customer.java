@@ -3,8 +3,10 @@ package com.fruitella.movie.entity;
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
@@ -12,45 +14,41 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 
 @Entity
-@Table(name = "staff", schema = "movie")
-public class Staff {
+@Table(name = "customer", schema = "movie")
+public class Customer {
 
     @Id
-    @Column(name = "staff_id")
-    private Byte id;
-
-    @Column(name = "first_name", length = 45)
-    private String first_name;
-
-    @Column(name = "last_name", length = 45)
-    private String last_name;
-
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
-
-    @Lob
-    @Column(name = "picture", columnDefinition = "BLOB")
-    private Byte[] picture;
-
-    @Column(name = "email", length = 50)
-    private String email;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
+    private Short id;
 
     @ManyToOne
     @JoinColumn(name = "store_id")
     private Store store;
 
+    @Column(name = "first_name", length = 45)
+    private String firstName;
+
+    @Column(name = "last_name", length = 45)
+    private String lastName;
+
+    @Column(name = "email", length = 50)
+    private String email;
+
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     @Column(name = "active", columnDefinition = "BIT")
     @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean active;
 
-    @Column(name = "username", length = 16)
-    private String username;
-
-    @Column(name = "password", length = 40)
-    private String password;
+    @Column(name = "create_date")
+    @CreationTimestamp
+    private LocalDateTime createDate;
 
     @Column(name = "last_update")
     @Timestamp
