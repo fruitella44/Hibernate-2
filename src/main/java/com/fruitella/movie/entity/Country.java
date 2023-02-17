@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,6 @@ public class Country {
     private String country;
 
     @Column(name = "last_update")
-    @Timestamp
+    @UpdateTimestamp
     private LocalDateTime lastUpdate;
 }

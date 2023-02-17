@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -51,7 +52,7 @@ public class Customer {
     private LocalDateTime createDate;
 
     @Column(name = "last_update")
-    @Timestamp
+    @UpdateTimestamp
     private LocalDateTime lastUpdate;
 
 }

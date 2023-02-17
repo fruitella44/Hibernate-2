@@ -23,7 +23,7 @@ public class Language {
     @Column(name = "language_id")
     private Byte id;
 
-    @Column(columnDefinition = "char")
+    @Column(name = "name", columnDefinition = "char")
     private String name;
 
     @Column(name = "last_update")

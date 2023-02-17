@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -28,8 +29,12 @@ public class Store {
     @JoinColumn(name = "manager_staff_id")
     private Staff staff;
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     @Column(name = "last_update")
-    @Timestamp
+    @UpdateTimestamp
     private LocalDateTime lastUpdate;
 
 

@@ -28,4 +28,8 @@ public class FilmText {
     @Type(type = "text")
     private String description;
 
+    @OneToOne
+    @JoinColumn(name = "film_id")
+    private Film film;
+
 }

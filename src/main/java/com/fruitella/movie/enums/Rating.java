@@ -1,6 +1,10 @@
 package com.fruitella.movie.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
+@AllArgsConstructor
 public enum Rating {
     G("G"),
     PG("PG"),
@@ -10,14 +14,8 @@ public enum Rating {
 
     private final String rate;
 
-    Rating(String rate) {
-        this.rate = rate;
-    }
-
-    public String getRate() {
-        return rate;
-    }
-
     //enum('G', 'PG', 'PG-13', 'R', 'NC-17')
+
+
 
 }
