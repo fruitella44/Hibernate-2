@@ -1,17 +1,19 @@
 package com.fruitella.movie.DAO;
 
-import com.fruitella.movie.session.MovieSessionFactory;
 import jakarta.persistence.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 public abstract class GenericDAO<T> {
 
     private final Class<T> clazz;
+    private final SessionFactory sessionFactory;
 
-    public GenericDAO(Class<T> clazz) {
+    public GenericDAO(Class<T> clazz, SessionFactory sessionFactory) {
         this.clazz = clazz;
+        this.sessionFactory = sessionFactory;
     }
 
     public T getByid(final int id) {
@@ -48,6 +50,6 @@ public abstract class GenericDAO<T> {
     }
 
     protected Session getCurrentSession() {
-        return MovieSessionFactory.getSessionFactory().getCurrentSession();
+        return sessionFactory.getCurrentSession();
     }
 }

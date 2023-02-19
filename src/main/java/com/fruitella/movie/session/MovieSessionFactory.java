@@ -5,9 +5,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class MovieSessionFactory {
-
+    //TODO SingleTone sessionFactory for refactoring
     private static MovieSessionFactory instance;
     private final SessionFactory sessionFactory;
+
 
     private MovieSessionFactory() {
         sessionFactory = new Configuration()
@@ -25,7 +26,7 @@ public class MovieSessionFactory {
                 .addAnnotatedClass(Rental.class)
                 .addAnnotatedClass(Staff.class)
                 .addAnnotatedClass(Store.class)
-                .buildSessionFactory();
+                .configure().buildSessionFactory();
     }
 
     public static SessionFactory getSessionFactory() {
