@@ -3,6 +3,7 @@ package com.fruitella.movie.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import static java.util.Objects.isNull;
 
