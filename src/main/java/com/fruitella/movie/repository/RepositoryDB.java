@@ -167,10 +167,11 @@ public class RepositoryDB {
             filmDAO.save(film);
 
             FilmText filmText = new FilmText();
-            filmText.setId(film.getId());
+            filmText.setId(filmText.getId());
             filmText.setTitle("The great Movie");
             filmText.setDescription("Comedy");
             filmText.setFilm(film);
+            filmTextDAO.save(filmText);
 
             transaction.commit();
         }
