@@ -17,7 +17,6 @@ import org.hibernate.annotations.Type;
 public class FilmText {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "film_id")
     private Short id;
 
@@ -29,6 +28,7 @@ public class FilmText {
     private String description;
 
     @OneToOne
+    @MapsId
     @JoinColumn(name = "film_id")
     private Film film;
 
